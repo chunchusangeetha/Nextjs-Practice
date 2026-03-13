@@ -20,6 +20,9 @@ export default function NavBar() {
             <Link href="/users" className="text-blue-600 font-semibold hover:underline">
                 Users
             </Link>
+            <Link href='/dashboard' className="text-blue-600 font-semibold hover:underline">
+                DashBoard
+            </Link>
         </nav>
     )
 }
