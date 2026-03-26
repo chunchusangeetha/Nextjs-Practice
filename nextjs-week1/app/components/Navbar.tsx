@@ -23,6 +23,9 @@ export default function NavBar() {
             <Link href='/dashboard' className="text-blue-600 font-semibold hover:underline">
                 DashBoard
             </Link>
+            <Link href='/infinite-scroll' className="text-blue-600 font-semibold hover:underline">
+                Infinite-scroll
+            </Link>
         </nav>
     )
 }
