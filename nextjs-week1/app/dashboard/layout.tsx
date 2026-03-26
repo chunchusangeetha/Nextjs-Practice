@@ -12,6 +12,7 @@ export default function DashboardLayout({ children,modal }:
                     <ul className="space-y-3">
                         <li><Link href="/dashboard">Dashboard Homeg</Link></li>
                         <li><Link href="/dashboard/users">Users</Link></li>
+                        <li><Link href="/dashboard/add">Add User</Link></li>
                         <li><Link href="/dashboard/usersdynamic">UersDynamic(formodal)</Link></li>
 
                     </ul>
