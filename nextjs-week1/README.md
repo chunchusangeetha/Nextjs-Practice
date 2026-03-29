@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -35,21 +34,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# Nextjs-Practice
-
-
-- **Project:** `nextjs-week1`
-- **Summary:** Added a basic Next.js app with routes `/`, `/about`, and `/contact`.
-
-**Files added/modified:**
-- `nextjs-week1/`
-
-### Day 2
-
-- Added a `Navbar` component.
-
-### Day 3
-
-- Added dynamic routing for products and users.
->>>>>>> 62f2f34cbb37ac056c9c2e680808411830b96aef
