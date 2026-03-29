@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
@@ -52,4 +49,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ### Day 3
 
 - Added dynamic routing for products and users.
->>>>>>> 62f2f34cbb37ac056c9c2e680808411830b96aef
+
