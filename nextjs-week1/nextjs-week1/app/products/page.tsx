@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname, useRouter,useSearchParams } from "next/navigation"
+import { useRouter } from "next/navigation"
 
 const products = [
   { id: 1, name: "Laptop" },
@@ -11,10 +11,6 @@ const products = [
 
 export default function ProductsPage() {
   const router = useRouter()
-  const pathName = usePathname();
-  console.log("Current Path:", pathName);
-  const searchParams = useSearchParams();
-  console.log("Search Params:", searchParams.get('search'),searchParams.get('randomvalue'));
 
   return (
     <div>

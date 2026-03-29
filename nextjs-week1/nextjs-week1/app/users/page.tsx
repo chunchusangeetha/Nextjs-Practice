@@ -4,9 +4,7 @@ type User = {
     id: number
     name: string
 }
-export default async function Users({searchParams}: any) {
-    const s= await searchParams;
-    console.log("Search Params:", await s.search);
+export default async function Users() {
     const users = await fetch("https://jsonplaceholder.typicode.com/users",
         {
             next: { revalidate: 60 }
