@@ -7,19 +7,24 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { addNewUserControls, addNewUserInitialValues } from "@/utils";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
-import { addNewUser } from "@/actions";
+import { addNewUser, editUserAction } from "@/actions";
+import { UserContext } from "@/context";
 
 export default function AddNewUser() {
-  const [openpopup, setOpenPopup] = useState(false);
-  const [addNewUserFormData, setAddNewUserFormData] = useState(
-    addNewUserInitialValues,
-  );
-  console.log("addNewUserFormData", addNewUserFormData);
+  const context = useContext(UserContext);
+  
+  if (!context) {
+    return null;
+  }
+
+  const { openpopup, setOpenPopup, addNewUserFormData, setAddNewUserFormData,currentEditedID,setCurrentEditedID } =
+    context;
+
   function handleSaveButtonValid() {
     return Object.keys(addNewUserFormData).every(
       (key) =>
@@ -30,12 +35,17 @@ export default function AddNewUser() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  async function handleAddNewUserAction(event: React.FormEvent<HTMLFormElement>) {
+  async function handleAddNewUserAction(
+    event: React.FormEvent<HTMLFormElement>,
+  ) {
     event.preventDefault();
     setIsSubmitting(true);
     try {
-      const result = await addNewUser(addNewUserFormData);
-      console.log("Result from addNewUser action:", result);
+      const result = currentEditedID !== null ? await editUserAction(
+        currentEditedID,
+        "/user-management",
+        addNewUserFormData
+      ): await addNewUser(addNewUserFormData, "/user-management");
 
       if (result.success) {
         setOpenPopup(false);
@@ -56,11 +66,12 @@ export default function AddNewUser() {
         onOpenChange={() => {
           setOpenPopup(false);
           setAddNewUserFormData(addNewUserInitialValues);
+          setCurrentEditedID(null);
         }}
       >
         <DialogContent className="sm:max-w-106.25">
           <DialogHeader>
-            <DialogTitle>Add New User</DialogTitle>
+            <DialogTitle>{currentEditedID !== null ? "Edit User" : "Add New User"}</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleAddNewUserAction} className="grid gap-4 py-4">
             <div>
@@ -92,15 +103,15 @@ export default function AddNewUser() {
               ))}
             </div>
 
-          <DialogFooter>
-            <Button
-              className="disabled:opacity-55"
-              type="submit"
-              disabled={!handleSaveButtonValid() || isSubmitting}
-            >
-              {isSubmitting ? "Saving..." : "Save"}
-            </Button>
-          </DialogFooter>
+            <DialogFooter>
+              <Button
+                className="disabled:opacity-55"
+                type="submit"
+                disabled={!handleSaveButtonValid() || isSubmitting}
+              >
+                {isSubmitting ? "Saving..." : "Save"}
+              </Button>
+            </DialogFooter>
           </form>
         </DialogContent>
       </Dialog>
