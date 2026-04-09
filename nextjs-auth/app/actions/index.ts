@@ -61,7 +61,6 @@ export async function loginUserAction(formData: any) {
     }
 
     //password valid
-
     const checkPassword = await bcryptjs.compare(password, checkUser.password);
     if (!checkPassword) {
       return {

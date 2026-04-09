@@ -33,7 +33,7 @@ export default function SignIn() {
                 (event:any) => 
                   setSignInFormData({
                     ...signInFormData,
-                    [event.target.name]:event.target.value
+                    [controlItem.name]:event.target.value
                   })
               }
               />

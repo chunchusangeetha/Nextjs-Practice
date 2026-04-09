@@ -35,7 +35,7 @@ export default function SignUp() {
               onChange={(event: any) =>
                 setSignUpFormData({
                   ...signUpFormData,
-                  [event.target.name]: event.target.value,
+                  [controlItem.name]: event.target.value,
                 })
               }
             />

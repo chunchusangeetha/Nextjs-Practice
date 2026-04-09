@@ -1,10 +1,10 @@
-import { NextResponse } from 'next/dist/server/web/exports';
+import { NextResponse } from 'next/server';
 import {cookies} from 'next/headers'
 
-export function middleware(request:any){
-    const path = request.nextUrl.pathName;
-    const checkPublicPath = path === '/sign-in' || path ==='sign-up'
-    const getCookies:any = cookies();
+export async function middleware(request:any){
+    const path = request.nextUrl.pathname;
+    const checkPublicPath = path === '/sign-in' || path ==='/sign-up'
+    const getCookies:any = await cookies();
     const token = getCookies.get("token")?.value || "";
 
     if(checkPublicPath && token !== ""){
@@ -19,5 +19,7 @@ export function middleware(request:any){
 }
 
 export const config = {
-    matcher : ['/sign-in','/sign-up']
+     matcher: [
+        '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    ],
 }
